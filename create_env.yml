@@ -7,7 +7,7 @@
     register: result
     
   - debug:
-    msg: result
+      var:: result
     
   - name: Get repository
     git:
