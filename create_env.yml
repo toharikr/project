@@ -1,6 +1,9 @@
 - hosts: localhost
 
   tasks:
+ 
+  - name: pwd value
+    command: pwd
   - name: Get repository
     git:
       repo: 'https://github.com/toharikr/project.git'
