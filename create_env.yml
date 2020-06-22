@@ -1,4 +1,4 @@
 - git:
-    repo: 'https://foosball.example.org/path/to/repo.git'
+    repo: 'https://github.com/toharikr/project.git'
     dest: /home/checkout
     version: dev
