@@ -12,7 +12,7 @@
   - name: Get repository
     git:
       repo: 'https://github.com/toharikr/project.git'
-      dest: /home/checkout
+      dest: .
       version: dev
   - include_vars: env.yml
   - debug: msg="Hello, {{ name }}!"
