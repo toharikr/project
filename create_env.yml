@@ -1,4 +1,11 @@
-- git:
-    repo: 'https://github.com/toharikr/project.git'
-    dest: /home/checkout
-    version: dev
+- hosts: localhost
+
+  tasks:
+  - name: Get repository
+    git:
+      repo: 'https://github.com/toharikr/project.git'
+      dest: /home/checkout
+      version: dev
+  - include_vars: env.yml
+  - debug: msg="Hello, {{ name }}!"
+      
