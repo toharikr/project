@@ -4,6 +4,11 @@
  
   - name: pwd value
     command: pwd
+    register: result
+    
+  - debug:
+    msg: result
+    
   - name: Get repository
     git:
       repo: 'https://github.com/toharikr/project.git'
