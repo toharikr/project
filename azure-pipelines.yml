@@ -13,13 +13,7 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-- task: Ansible@0
-  inputs:
-    ansibleInterface: 'agentMachine'
-    playbookPathOnAgentMachine: '/usr/home'
-    inventoriesAgentMachine: 'noInventory'
+- script: pip install ansible[azure]
+  displayName: 'Install Ansible and the Azure modules'
+  
+- script: ansible-playbook env.yml
