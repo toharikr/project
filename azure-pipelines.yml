@@ -13,7 +13,7 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: pip install ansible[azure]
+- script: pip install ansible[azure] = 2.9.2
   displayName: 'Install Ansible and the Azure modules'
   
 - script: ansible-playbook create_env.yml
