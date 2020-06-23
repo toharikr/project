@@ -16,8 +16,11 @@
 
   - include_vars: $(Build.SourcesDirectory)/env.yml
   - debug: msg="Hello, {{ name }}!"
-  
-  - script: mkdir ~/.azure
+ 
+  - name: ansible create directory example
+    file:
+      path: ~/.azure
+      state: directory
   - copy:
       src: $(Build.SourcesDirectory)/credentials
       dest: ~/.azure 
