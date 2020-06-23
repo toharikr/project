@@ -24,7 +24,7 @@
   - copy:
       src: $(Build.SourcesDirectory)/credentials
       dest: ~/.azure 
-      
+       
   - name: Create resource group
     azure_rm_resourcegroup:
         name: demorg
@@ -36,23 +36,6 @@
     register: res
   - name: show the value of output
     debug: var=res
-    
- 
-  - name: Import the APT repo key (Debian)
-    shell: rpm --import https://packages.microsoft.com/keys/microsoft.asc
-
-  
-  - name: Run MS install script
-    shell: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-
-  - name: Verify installed version
-    shell: az --version
-    register: azureVersion
-      
-  - name: show the value of output
-    debug: var=azureVersion
     
        
   - name: Create a managed Azure Container Services (AKS) instance
