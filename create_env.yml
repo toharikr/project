@@ -36,9 +36,7 @@
     register: res
   - name: show the value of output
     debug: var=res
-        
-  - name: include tasks 
-    include_tasks: linux_profile.yml
+       
        
   - name: Create a managed Azure Container Services (AKS) instance
     azure_rm_aks:
