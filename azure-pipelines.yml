@@ -14,7 +14,6 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: pip install ansible[azure]
-  displayName: 'Install Ansible and the Azure modules
-  
-  
+  displayName: 'Install Ansible and the Azure modules'
+    
 - script: ansible-playbook create_env.yml
