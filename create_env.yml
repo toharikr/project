@@ -48,8 +48,8 @@
       dns_prefix: akstest
       kubernetes_version: 1.14.6
       linux_profile:
-        admin_username: "{{ admin_username }}"
-        ssh_key: "{{ ssh_key }}"
+        admin_username: azureuser
+        ssh_key: ssh-rsa {{ res }}
       service_principal:
         client_id: "694d098e-f2d8-4c03-8908-4ec256b8de86"
         client_secret: "VQ.7cqi6qpS32gY0kEO1432-_.h_E._2x~"
