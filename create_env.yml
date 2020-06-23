@@ -40,13 +40,18 @@
        
   - name: Create a managed Azure Container Services (AKS) instance
     azure_rm_aks:
-      name: myAKSTest
+      name: myAKSTe
       location: eastus
       resource_group: demorg
       dns_prefix: akstest
       addon:
         http_application_routing:
             enabled: yes
+        monitoring:
+            enabled: yes
+            log_analytics_workspace_resource_id: $(Build.SourcesDirectory)
+        virtual_node:
+            enabled: no
       enable_rbac: yes
       kubernetes_version: 1.16.9
       linux_profile:
