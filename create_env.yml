@@ -29,16 +29,13 @@
     azure_rm_resourcegroup:
         name: demorg
         location: eastus
-    register: rg
-  - debug:
-        var: rg
         
   - name: Create resource group    
     openssh_keypair:
        path: /tmp/id_ssh_rsa
     register: res
-  - debug: 
-        var: res 
+  - name: show the value of output
+    debug: var=res
         
   - name: include tasks 
     include_tasks: linux_profile.yml
