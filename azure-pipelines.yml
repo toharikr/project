@@ -13,7 +13,12 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: pip install ansible[azure] = 2.9.2
+- script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
+  
+- name: Print message if ansible version is greater than 2.7.0
+  debug:
+    msg: "Ansible version is  {{ ansible_version.full }}"
+  
   
 - script: ansible-playbook create_env.yml
