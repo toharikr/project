@@ -32,4 +32,29 @@
     register: rg
   - debug:
         var: rg
-      
+        
+  - name: Create resource group    
+    openssh_keypair:
+       path: /tmp/id_ssh_rsa
+    register: res
+  - debug: var1=res 
+  
+  - name: Create a managed Azure Container Services (AKS) instance
+    azure_rm_aks:
+      name: myAKS
+      location: eastus
+      resource_group: myResourceGroup
+      dns_prefix: akstest
+      kubernetes_version: 1.14.6
+    linux_profile:
+      admin_username: azureuser
+      ssh_key: ssh-rsa $(var1)
+    service_principal:
+      client_id: "cf72ca99-f6b9-4004-b0e0-bee10c521948"
+      client_secret: "mySPNp@ssw0rd!"
+    agent_pool_profiles:
+      - name: default
+        count: 1
+        vm_size: Standard_D2_v2
+    tags:
+      Environment: dev
