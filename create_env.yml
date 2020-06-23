@@ -8,7 +8,11 @@
     
   - debug:
       var: result
-    
+      
+  - name: Print message of ansible version
+    debug:
+      msg: "Ansible version is  {{ ansible_version.full }}"   
+      
   - name: Get repository
     git:
       repo: 'https://github.com/toharikr/project.git'
