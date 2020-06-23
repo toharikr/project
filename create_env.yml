@@ -1,6 +1,6 @@
 - hosts: localhost
-
-  - include_tasks: linux_profile.yml
+  
+  tasks:
  
   - name: pwd value
     command: pwd
@@ -40,7 +40,7 @@
   - debug: 
         var: res 
   
-  
+  - include_tasks: linux_profile.yml
   - name: Create a managed Azure Container Services (AKS) instance
     azure_rm_aks:
       name: myAKS
