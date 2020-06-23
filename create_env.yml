@@ -52,11 +52,11 @@
        state: present
 
   - name: Verify installed version
-      shell: az --version
-      register: azureVersion
+    shell: az --version
+    register: azureVersion
       
-    - name: show the value of output
-      debug: var=azureVersion
+  - name: show the value of output
+    debug: var=azureVersion
     
        
   - name: Create a managed Azure Container Services (AKS) instance
