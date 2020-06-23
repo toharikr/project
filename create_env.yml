@@ -44,7 +44,7 @@
   
   - name: Run MS install script
     shell: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
   - name: Install Azure CLi
     package:
