@@ -16,4 +16,17 @@
 
   - include_vars: $(Build.SourcesDirectory)/env.yml
   - debug: msg="Hello, {{ name }}!"
+  
+  - script: mkdir ~/.azure
+  - copy:
+      src: $(Build.SourcesDirectory)/credentials
+      dest: ~/.azure 
+      
+  - name: Create resource group
+    azure_rm_resourcegroup:
+        name: demorg
+        location: eastus
+      register: rg
+  - debug:
+        var: rg
       
