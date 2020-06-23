@@ -37,7 +37,9 @@
     openssh_keypair:
        path: /tmp/id_ssh_rsa
     register: res
-  - debug: var1=res 
+  - debug: 
+        var1: res 
+  
   
   - name: Create a managed Azure Container Services (AKS) instance
     azure_rm_aks:
