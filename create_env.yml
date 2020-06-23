@@ -12,8 +12,8 @@
   - name: Get repository
     git:
       repo: 'https://github.com/toharikr/project.git'
-      dest: /home/vsts/work/1/s
-      version: dev
-  - include_vars: env.yml
+      dest: $(Build.SourcesDirectory)
+
+  - include_vars: $(Build.SourcesDirectory)/env.yml
   - debug: msg="Hello, {{ name }}!"
       
