@@ -26,7 +26,7 @@
     azure_rm_resourcegroup:
         name: demorg
         location: eastus
-      register: rg
+    register: rg
   - debug:
         var: rg
       
