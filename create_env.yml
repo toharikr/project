@@ -1,5 +1,4 @@
 - hosts: localhost
-  gather_facts: True
   
   tasks:
  
@@ -9,10 +8,6 @@
     
   - debug:
       var: result
-      
-  - name: Print message of ansible version
-    debug:
-      msg: "Ansible version is  {{ ansible_version.full }}"   
       
   - name: Get repository
     git:
