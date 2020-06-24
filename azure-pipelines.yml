@@ -25,4 +25,4 @@ steps:
 
 - script: pip3 install ansible==2.9.2
     
-- script: ansible-playbook create_env.yml
+- script: ansible-playbook create_env.yml -e 'ansible_python_interpreter=/usr/bin/python3'
