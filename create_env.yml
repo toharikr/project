@@ -46,7 +46,7 @@
   - name: Create a managed Azure Container Services (AKS) instance
     azure_rm_aks:
       name: myAKS
-      location: eastus
+      location: eastus2
       resource_group: demorg
       dns_prefix: akstest
 
