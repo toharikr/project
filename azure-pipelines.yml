@@ -14,8 +14,9 @@ steps:
   displayName: 'Run a one-line script'
   
 - script: sudo apt-get install python3.6
+- script: sudo apt-get install python3-setuptools
 
-- script: sudo pip install wheel
+- script: sudo pip3 install wheel
   displayName: 'wheel install'
   
   
