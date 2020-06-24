@@ -13,6 +13,9 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
   
+- script: sudo pip install wheel
+  displayName: 'wheel install'
+  
 - script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
 
