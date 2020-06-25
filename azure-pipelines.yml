@@ -8,10 +8,9 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-
-stages:
-- stage: Create Environment
+  
   steps:
+  
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
   
