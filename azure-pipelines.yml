@@ -18,7 +18,7 @@ steps:
 - script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
 
-- command: python --version
+- script: python --version
   register: result
 
 - debug:
