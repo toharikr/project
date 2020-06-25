@@ -5,12 +5,20 @@
   
   tasks:
   
-  - name: pythin verion
+  - name: python verion
     command: whereis python
     register: result1
     
   - debug:
       var: result1
+  
+  - name: python verion
+    command: python --version
+    register: result2
+  
+  - debug:
+      var: result2
+ 
  
   - name: Print message if ansible version is greater than 2.7.0
     debug:
@@ -60,11 +68,10 @@
        
   - name: Create a managed Azure Container Services (AKS) instance
     azure_rm_aks:
-      name: myAKST
+      name: akstest
       location: eastus2
       resource_group: demorg
       dns_prefix: akstest
-      enable_rbac: yes
       kubernetes_version: 1.14.7
       linux_profile:
         admin_username: azureuser
