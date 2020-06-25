@@ -77,7 +77,7 @@
     azure_rm_aks:
       name: aksdemo
       location: eastus2
-      resource_group: demorg
+      resource_group: demoazurerg
       dns_prefix: aksdemo
       kubernetes_version: 1.14.7
       linux_profile:
