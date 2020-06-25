@@ -56,7 +56,7 @@
        
   - name: Create resource group
     azure_rm_resourcegroup:
-        name: demorg
+        name: demoazurerg
         location: eastus
         
   - name: Create resource group    
@@ -75,10 +75,10 @@
        
   - name: Create a managed Azure Container Services (AKS) instance
     azure_rm_aks:
-      name: akstest
+      name: aksdemo
       location: eastus2
       resource_group: demorg
-      dns_prefix: akstest
+      dns_prefix: aksdemo
       kubernetes_version: 1.14.7
       linux_profile:
         admin_username: azureuser
