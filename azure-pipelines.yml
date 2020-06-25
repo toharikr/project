@@ -30,7 +30,7 @@ steps:
 - script: pip3 install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
   
-- script: python -m pip uninstall ansible && python3 -m pip install ansible
+#- script: python -m pip uninstall ansible && python3 -m pip install ansible
   
 #- script: sudo apt-get install python3.6
 
