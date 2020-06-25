@@ -1,6 +1,8 @@
 - hosts: localhost
   gather_facts: True
-    
+  vars:
+      ansible_python_interpreter: /usr/bin/python3 
+  
   tasks:
  
   - name: Print message if ansible version is greater than 2.7.0
