@@ -9,29 +9,29 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
   
-  steps:
+steps:
   
-  - script: echo Hello, world!
+- script: echo Hello, world!
     displayName: 'Run a one-line script'
   
-  - script: sudo apt-get autoremove python2.7
+- script: sudo apt-get autoremove python2.7
   
-  - script: sudo apt-get install python3.6
+- script: sudo apt-get install python3.6
 
-  - script: pip3 install wheel 
+- script: pip3 install wheel 
 
-  - script: pip3 install --upgrade pip
+- script: pip3 install --upgrade pip
 
-  - script: pip3 install packaging
+- script: pip3 install packaging
 
-  - script: sudo apt-get install python3-setuptools
+- script: sudo apt-get install python3-setuptools
 
-  - script: pip3 install ansible
+- script: pip3 install ansible
 
-  - script: pip3 install ansible[azure]
+- script: pip3 install ansible[azure]
     displayName: 'Install Ansible and the Azure modules'
     
-  - script: ~/.local/bin/ansible-playbook create_env.yml
+- script: ~/.local/bin/ansible-playbook create_env.yml
 
 
 
