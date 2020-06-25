@@ -18,6 +18,13 @@
   
   - debug:
       var: result2
+      
+  - name: ansible pythin version
+    command: ansible --version | grep "python version"
+    register: result3
+    
+  - debug:
+      var: result3 
  
  
   - name: Print message if ansible version is greater than 2.7.0
