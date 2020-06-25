@@ -76,9 +76,9 @@
        
   - name: Create a managed Azure Container Services (AKS) instance
     azure_rm_aks:
-      name: {{ aksname }}
+      name: "{{ aksname }}"
       location: eastus2
-      resource_group: {{ resourcegroup }}
+      resource_group: "{{ resourcegroup }}"
       dns_prefix: {{ aksname }}
       kubernetes_version: 1.14.7
       linux_profile:
