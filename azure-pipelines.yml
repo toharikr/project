@@ -17,8 +17,7 @@ steps:
 
 - script: sudo apt-get install -y python-setuptools
 
-- script: pip install wheel
-- script: python setup.py bdist_wheel 
+- script: pip install wheel 
 
 - script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
