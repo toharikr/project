@@ -19,7 +19,7 @@
   - debug:
       var: result2
       
-  - name: ansible pythin version
+  - name: ~/.local/bin/ansible pythin version
     command: ansible --version | grep "python version"
     register: result3
     
