@@ -25,13 +25,13 @@ steps:
 
 - script: sudo apt-get install python3-setuptools
 
-#- script: pip3 install ansible==2.9.2
+- script: pip3 install ansible
 
 - script: pip3 install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
   
   
-#- script: python -m pip uninstall ansible && python3 -m pip install ansible
+#- script: python3 -m pip install ansible
   
 #- script: sudo apt-get install python3.6
 
