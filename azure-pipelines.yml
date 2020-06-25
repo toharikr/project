@@ -47,4 +47,4 @@ steps:
 
 #- script: pip3 install ansible==2.9.2
     
-- script: ansible-playbook create_env.yml
+- script: ~/.local/bin/ansible-playbook create_env.yml
