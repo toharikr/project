@@ -13,7 +13,8 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
   
-  
+- script: sudo apt-get install python3.6
+
 - script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
 
