@@ -17,9 +17,13 @@ steps:
 
 - script: sudo apt-get install -y python-setuptools
 
-- script: pip install wheel 
+- script: pip3 install wheel 
 
-- script: pip install ansible[azure]
+- script: pip3 install --upgrade pip
+
+- script: pip3 install packaging
+
+- script: pip3 install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
 
 #- script: pip3 install ansible==2.9.2
