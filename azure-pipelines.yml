@@ -15,7 +15,7 @@ steps:
   
 - script: sudo apt-get install python3.6
 
-- script: pip install ansible[azure]
+- script: pip3 install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
 
 - script: python --version
