@@ -18,12 +18,6 @@ steps:
 - script: pip3 install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
 
-- script: "python --version"
-  register: result
-
-- debug:
-    var: result
-    verbosity: 2
 
 #- script: pip3 install ansible==2.9.2
     
