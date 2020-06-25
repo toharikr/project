@@ -94,4 +94,4 @@
         Environment: projectdev
     register: aks  
     
-  - debug: msg="{{ aks.stdout }}"
+  #- debug: msg="{{ aks.stdout }}"
