@@ -46,7 +46,7 @@
   - name: Fix azure_rm_aks Bug
     get_url:
        url: https://raw.githubusercontent.com/haiyuazhang/ansible/features/lib/ansible/modules/cloud/azure/azure_rm_aks.py
-       dest: /home/AzureUser/.local/lib/python3.6/site-packages/ansible/modules/cloud/azure/azure_rm_aks.py
+       dest: ~/.local/lib/python3.6/site-packages/ansible/modules/cloud/azure/azure_rm_aks.py
        checksum: sha256:96a111b66aec128fc8165beb803ac8684a8b2d3e84ba7be6ae0db94a81457fd6
  
        
