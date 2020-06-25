@@ -13,9 +13,9 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
   
+- script: sudo apt-get autoremove python2.7.17
+  
 - script: sudo apt-get install python3.6
-
-- script: sudo apt-get install -y python-setuptools
 
 - script: pip3 install wheel 
 
