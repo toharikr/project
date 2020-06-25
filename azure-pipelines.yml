@@ -13,7 +13,19 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
   
+- script: sudo apt-get install python3.6
 
+- script: sudo apt-get install -y python-setuptools
+
+- script: pip3 install wheel 
+
+- script: pip3 install --upgrade pip
+
+- script: pip3 install packaging
+
+- script: sudo apt-get install python3-setuptools
+
+#- script: pip3 install ansible==2.9.2
 
 - script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
