@@ -44,7 +44,7 @@
       dest: $(Build.SourcesDirectory)
 
   - include_vars: $(Build.SourcesDirectory)/env.yml
-  - debug: msg="rg name : {{ resourcegroup }} and aksname: {{ aksname }} "
+  - debug: msg="rg name {{ resourcegroup }} and aksname {{ aksname }} "
   
  
   - name: ansible create directory example
