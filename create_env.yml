@@ -101,7 +101,7 @@
   - name: Create an azure container registry
     azure_rm_containerregistry:
       name: acregistry
-      location: eastus
+      location: eastus2
       resource_group: testrg
       admin_user_enabled: true
       sku: Premium
