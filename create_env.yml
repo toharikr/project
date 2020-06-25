@@ -4,6 +4,13 @@
       ansible_python_interpreter: /usr/bin/python3 
   
   tasks:
+  
+  - name: pythin verion
+    command: whereis python
+    register: result1
+    
+  - debug:
+      var: result1
  
   - name: Print message if ansible version is greater than 2.7.0
     debug:
