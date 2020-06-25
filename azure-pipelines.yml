@@ -22,6 +22,13 @@ steps:
 - script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
 
+- name: python path
+  command: whereis python
+  register: result
+  
+- debug:
+    var: result
+    verbosity: 2
 
 #- script: pip3 install ansible==2.9.2
     
