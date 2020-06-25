@@ -18,6 +18,13 @@ steps:
 - script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
 
+- command: python --version
+  register: result
+
+- debug:
+    var: result
+    verbosity: 2
+
 #- script: pip3 install ansible==2.9.2
     
 - script: ansible-playbook create_env.yml
