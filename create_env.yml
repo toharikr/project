@@ -107,4 +107,4 @@
       sku: Premium
       tags:
         Release: beta1
-        Environment: dev
+        Environment: development
