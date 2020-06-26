@@ -62,7 +62,6 @@
     azure_rm_resourcegroup:
         name: "{{ resourcegroup }}"
         location: eastus
-        state: absent
         
   - name: Create resource group    
     openssh_keypair:
@@ -96,7 +95,6 @@
         - name: default
           count: 1
           vm_size: Standard_D2_v2
-      state: present
       tags:
         Environment: projectdev
     register: aks  
@@ -112,4 +110,5 @@
       sku: Premium
       tags:
         Release: beta1
-        Environment: development
+        Environment: projectdev
+        
