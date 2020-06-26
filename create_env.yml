@@ -3,7 +3,9 @@
   vars:
       ansible_python_interpreter: /usr/bin/python3 
   
+  
   tasks:
+ 
   
   - name: python verion
     command: whereis python
