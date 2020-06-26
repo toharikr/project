@@ -27,6 +27,7 @@
       var: result3 
  
  
+ 
   - name: Print message if ansible version is greater than 2.7.0
     debug:
       msg: "Ansible version is  {{ ansible_version.full }}"
