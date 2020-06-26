@@ -100,7 +100,7 @@
   
   - name: Create an azure container registry
     azure_rm_containerregistry:
-      name: " {{ acr }}"
+      name: "{{ acr }}"
       location: eastus
       resource_group: "{{ resourcegroup }}"
       admin_user_enabled: true
