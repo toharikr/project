@@ -75,34 +75,34 @@
        
  
        
- # - name: Create a managed Azure Container Services (AKS) instance
- #   azure_rm_aks:
- #     name: "{{ aksname }}"
- #     location: eastus2
- #     resource_group: "{{ resourcegroup }}"
- #     dns_prefix: "{{ aksname }}"
- #     kubernetes_version: 1.14.7
- #     linux_profile:
- #       admin_username: azureuser
- #       ssh_key: "{{ res.public_key }}"
- #     service_principal:
- #       client_id: "694d098e-f2d8-4c03-8908-4ec256b8de86"
- #       client_secret: "VQ.7cqi6qpS32gY0kEO1432-_.h_E._2x~"
- #     agent_pool_profiles:
- #       - name: default
- #         count: 1
- #         vm_size: Standard_D2_v2
- #     tags:
- #       Environment: projectdev
- #   register: aks  
+  - name: Create a managed Azure Container Services (AKS) instance
+    azure_rm_aks:
+      name: "{{ aksname }}"
+      location: eastus2
+      resource_group: "{{ resourcegroup }}"
+      dns_prefix: "{{ aksname }}"
+      kubernetes_version: 1.14.7
+      linux_profile:
+        admin_username: azureuser
+        ssh_key: "{{ res.public_key }}"
+      service_principal:
+        client_id: "694d098e-f2d8-4c03-8908-4ec256b8de86"
+        client_secret: "VQ.7cqi6qpS32gY0kEO1432-_.h_E._2x~"
+      agent_pool_profiles:
+        - name: default
+          count: 1
+          vm_size: Standard_D2_v2
+      tags:
+        Environment: projectdev
+    register: aks  
     
   #- debug: msg="{{ aks.stdout }}"
   
   - name: Create an azure container registry
     azure_rm_containerregistry:
-      name: acregistry
-      location: eastus2
-      resource_group: testrg
+      name: " {{ acr }}"
+      location: eastus
+      resource_group: "{{ resourcegroup }}"
       admin_user_enabled: true
       sku: Premium
       tags:
