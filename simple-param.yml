@@ -2,3 +2,5 @@ variables:
   imageRepository: 'toharikrproject'
   dockerRegistryServiceConnection: c4d6dfa3-4e53-46af-93c3-d998d8b1ad18
   containerRegistry: acrauto.azurecr.io
+  dockerfilePath: '**/Dockerfile'
+  tag: '$(Build.BuildId)'
