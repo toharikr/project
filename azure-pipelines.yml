@@ -9,30 +9,47 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
   
-steps:
+stages:
+
+- stage: Create Environment
+
+  displayName: Create Environment
   
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-  
-- script: sudo apt-get autoremove python2.7
-  
-- script: sudo apt-get install python3.6
-
-- script: pip3 install wheel 
-
-- script: pip3 install --upgrade pip
-
-- script: pip3 install packaging
-
-- script: sudo apt-get install python3-setuptools
-
-- script: pip3 install ansible
-
-- script: pip3 install ansible[azure]
-  displayName: 'Install Ansible and the Azure modules'
+  jobs:
+  - job: create environemnt
+    displayName: create environemnt
     
-- script: ~/.local/bin/ansible-playbook create_env.yml
+    steps:
+  
+     - script: echo Hello, world!
+       displayName: 'Run a one-line script'
+  
+     - script: sudo apt-get autoremove python2.7
+       displayName: 'Remove Python 2.7'
+  
+     - script: sudo apt-get install python3.6
+       displayName: 'Install Python 3.6'
+       
+     - script: pip3 install wheel 
+       displayName: 'Install Pyhton wheel'
+       
+     - script: pip3 install --upgrade pip
+       displayName: 'install Pyhton pip'
 
+     - script: pip3 install packaging
+       displayName: 'Install Python packaging'
+
+     - script: sudo apt-get install python3-setuptools
+       displayName: 'Install Python setuptools'
+
+     - script: pip3 install ansible
+       displayName: 'Install ansible'
+
+     - script: pip3 install ansible[azure]
+       displayName: 'Install Ansible and the Azure modules'
+    
+     - script: ~/.local/bin/ansible-playbook create_env.yml
+       displayName: 'createenv ansible script'
 
 
 
