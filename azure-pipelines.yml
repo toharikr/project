@@ -12,6 +12,7 @@ pool:
 variables:
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
+- template: simple-param.yml  # Template reference
   
 stages:
 - stage: Create_Environment
@@ -63,12 +64,12 @@ stages:
       vmImage: 'ubuntu-latest'
       
     steps:
-    - template: simple-param.yml
+
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
         command: buildAndPush
-        repository: ${{ parameters.imageRepository }}
+        repository: ${{ variables.imageRepository }}
         dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
         #containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
