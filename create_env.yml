@@ -12,7 +12,7 @@
       dest: $(Build.SourcesDirectory)
 
   - include_vars: $(Build.SourcesDirectory)/env.yml
-  - include_vars: $(Build.SourcesDirectory)/credentials
+ 
   
   - debug: msg="rg name {{ resourcegroup }} and aksname {{ aksname }} "
   
