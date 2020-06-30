@@ -6,40 +6,6 @@
   
   tasks:
  
-  
-  - name: python verion
-    command: whereis python
-    register: result1
-    
-  - debug:
-      var: result1
-  
-  - name: python verion
-    command: python --version
-    register: result2
-  
-  - debug:
-      var: result2
-      
-  - name: ansible python version
-    command: ~/.local/bin/ansible --version | grep "python version"
-    register: result3
-    
-  - debug:
-      var: result3 
- 
- 
- 
-  - name: Print message if ansible version is greater than 2.7.0
-    debug:
-      msg: "Ansible version is  {{ ansible_version.full }}"
-      
-  - name: pwd value
-    command: pwd
-    register: result
-    
-  - debug:
-      var: result
       
   - name: Get repository
     git:
@@ -47,6 +13,8 @@
       dest: $(Build.SourcesDirectory)
 
   - include_vars: $(Build.SourcesDirectory)/env.yml
+  - include_vars: $(Build.SourcesDirectory)/credentials
+  
   - debug: msg="rg name {{ resourcegroup }} and aksname {{ aksname }} "
   
  
@@ -63,7 +31,7 @@
         name: "{{ resourcegroup }}"
         location: eastus
         
-  - name: Create resource group    
+  - name: ssh   
     openssh_keypair:
        path: /tmp/id_ssh_rsa
     register: res
@@ -78,19 +46,19 @@
        
  
        
-  - name: Create a managed Azure Container Services (AKS) instance
+  - name: Create a managed Azure Container Services (AKS) dev instance
     azure_rm_aks:
-      name: "{{ aksname }}"
+      name: "{{ aksnamedev }}"
       location: eastus2
       resource_group: "{{ resourcegroup }}"
-      dns_prefix: "{{ aksname }}"
+      dns_prefix: "{{ aksnamedev }}"
       kubernetes_version: 1.14.7
       linux_profile:
         admin_username: azureuser
         ssh_key: "{{ res.public_key }}"
       service_principal:
-        client_id: "694d098e-f2d8-4c03-8908-4ec256b8de86"
-        client_secret: "VQ.7cqi6qpS32gY0kEO1432-_.h_E._2x~"
+        client_id: "{{ client_id }}"
+        client_secret: "{{ secret }}"
       agent_pool_profiles:
         - name: default
           count: 1
@@ -98,6 +66,31 @@
       tags:
         Environment: projectdev
     register: aks  
+    
+    
+    
+    - name: Create a managed Azure Container Services (AKS) QA instance
+    azure_rm_aks:
+      name: "{{ aksnameqa }}"
+      location: eastus2
+      resource_group: "{{ resourcegroup }}"
+      dns_prefix: "{{ aksnameqa }}"
+      kubernetes_version: 1.14.7
+      linux_profile:
+        admin_username: azureuser
+        ssh_key: "{{ res.public_key }}"
+      service_principal:
+        client_id: "{{ client_id }}"
+        client_secret: "{{ secret }}"
+      agent_pool_profiles:
+        - name: default
+          count: 1
+          vm_size: Standard_D2_v2
+      tags:
+        Environment: projectqa
+    register: aks  
+    
+    
     
   #- debug: msg="{{ aks.stdout }}"
   
@@ -110,5 +103,5 @@
       sku: Premium
       tags:
         Release: beta1
-        Environment: projectdev
+        Environment: project
         
