@@ -1,12 +1,4 @@
-parameters:
-- name: imageRepository
-  type: string
-  default: "toharikrproject"
-  
-- name: dockerRegistryServiceConnection
-  type: string
-  default: c4d6dfa3-4e53-46af-93c3-d998d8b1ad18
-  
-- name: containerRegistry
-  type: string
-  default: acrauto.azurecr.io
+variables:
+  imageRepository: 'toharikrproject'
+  dockerRegistryServiceConnection: c4d6dfa3-4e53-46af-93c3-d998d8b1ad18
+  containerRegistry: acrauto.azurecr.io
