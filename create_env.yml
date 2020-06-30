@@ -4,8 +4,7 @@
       ansible_python_interpreter: /usr/bin/python3 
   
   
-  tasks:
- 
+  tasks: 
       
   - name: Get repository
     git:
