@@ -9,9 +9,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
   
-extends:
-  template: simple-param.yml
-  
 variables:
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
