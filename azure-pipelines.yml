@@ -10,17 +10,13 @@ pool:
   vmImage: 'ubuntu-latest'
   
 stages:
-
 - stage: Create Environment
-
   displayName: Create Environment
   
   jobs:
   - job: create environemnt
-    displayName: create environemnt
-    
+    displayName: create environemnt   
     steps:
-  
      - script: echo Hello, world!
        displayName: 'Run a one-line script'
   
