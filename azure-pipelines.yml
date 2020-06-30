@@ -14,7 +14,7 @@ stages:
   displayName: Create Environment
   
   jobs:
-  - job: create environemnt
+  - job: create_environemnt
     displayName: create environemnt   
     steps:
      - script: echo Hello, world!
