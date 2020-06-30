@@ -1,16 +1,16 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: toharikrdemoazure 
+  name: toharikrproject
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: toharikrdemoazure 
+        app: toharikrproject 
     spec:
       containers:
-        - name: toharikrdemoazure 
-          image: demoazurecr.azurecr.io/toharikrdemoazure
+        - name: toharikrproject 
+          image: demoazurecr.azurecr.io/toharikrproject
           ports:
           - containerPort: 8080
