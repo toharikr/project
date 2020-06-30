@@ -10,8 +10,6 @@ pool:
   vmImage: 'ubuntu-latest'
   
 variables:
-  dockerfilePath: '**/Dockerfile'
-  tag: '$(Build.BuildId)'
 - template: simple-param.yml  # Template reference
   
 stages:
