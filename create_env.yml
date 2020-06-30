@@ -68,7 +68,7 @@
     
     
     
-    - name: Create a managed Azure Container Services (AKS) QA instance
+  - name: Create a managed Azure Container Services (AKS) QA instance
     azure_rm_aks:
       name: "{{ aksnameqa }}"
       location: eastus2
