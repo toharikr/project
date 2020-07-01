@@ -88,11 +88,21 @@ stages:
       runOnce:
         deploy:
           steps:
+          
+          - task: KubernetesManifest@0
+            displayName: Create secret
+            inputs: 
+              action: createSecret
+              namespace: default
+              secretType: dockerRegistry
+              secretName: bar-acr-secret
+              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+              
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
               action: createSecret
-              secretName: $(imagePullSecret)
+              secretName: bar-acr-secret
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
               
           - task: KubernetesManifest@0
