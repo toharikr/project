@@ -1,6 +1,7 @@
 variables:
   imageRepository: 'toharikrproject'
   dockerRegistryServiceConnection: dockerconnection
+  kubernetesServiceConnection: kconnection
   containerRegistry: acrauto.azurecr.io
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
