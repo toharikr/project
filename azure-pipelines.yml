@@ -8,8 +8,8 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: server
+  #vmImage: 'ubuntu-latest'
   
 variables:
 - template: simple-param.yml  # Template reference
