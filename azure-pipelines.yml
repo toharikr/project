@@ -82,7 +82,7 @@ stages:
   - deployment: Deploy
     displayName: 'Deploy to the dev environment'
     pool:
-      vmImage: $(vmImageName)
+      vmImage: 'ubuntu-latest'
     environment: 'projectdev.default'
     strategy:
       runOnce:
