@@ -75,4 +75,41 @@ stages:
     
     - upload: manifests
       artifact: manifests
+ 
+- stage: Dev
+  displayName: 'Deploy to the dev environment'
+  jobs:
+  - deployment: Deploy
+    displayName: 'Deploy to the dev environment'
+    pool:
+      vmImage: $(vmImageName)
+    environment: 'projectdev.default'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: KubernetesManifest@0
+            displayName: Create imagePullSecret
+            inputs:
+              action: createSecret
+              secretName: $(imagePullSecret)
+              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+              
+          - task: KubernetesManifest@0
+            displayName: Deploy to Kubernetes cluster
+            inputs:
+              action: deploy
+              manifests: |
+                $(Pipeline.Workspace)/manifests/deployment.yml
+                $(Pipeline.Workspace)/manifests/service.yml
+              imagePullSecrets: |
+                $(imagePullSecret)
+              containers: |
+                $(containerRegistry)/$(imageRepository):$(tag)
+  
+  
+  
+  
+  
+  
   
