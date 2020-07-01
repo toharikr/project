@@ -78,6 +78,7 @@ stages:
             "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
             "name": "TestEndpoint",
             "type": "Azure",
+            "api-version": "2018-07-01"
             "authorization": {
               "parameters": {
                 "Certificate": "dummyCertificate"
