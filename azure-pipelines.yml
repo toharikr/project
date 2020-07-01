@@ -139,7 +139,7 @@ stages:
               secretType: dockerRegistry
               secretName: qa-acr-secret
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              kubernetesServiceConnection: $(kconnection)
+              kubernetesServiceConnection: $(kubernetesServiceConnection)
               
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
