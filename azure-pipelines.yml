@@ -68,7 +68,7 @@ stages:
       inputs:
         connectionType: 'connectedServiceNameARM'
         azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
-        api-version: '2018-07-01'
+        ApiVersion: "2015-08-01"
         method: 'POST'
         body: |
           {
