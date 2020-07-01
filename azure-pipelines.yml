@@ -125,7 +125,7 @@ stages:
     displayName: 'Deploy to the QA environment'
     pool:
       vmImage: 'ubuntu-latest'
-    environment: 'projectqa'
+    environment: 'projectqa.default'
     strategy:
       runOnce:
         deploy:
