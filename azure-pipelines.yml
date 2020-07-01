@@ -158,6 +158,7 @@ stages:
                 qa-acr-secret
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
+                
   
   
   
