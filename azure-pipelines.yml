@@ -21,7 +21,7 @@ stages:
   jobs:
   - job: create_environemnt
     displayName: create environemnt   
-    steps:
+    #steps:
      
      #- script: echo Hello, world!
      #  displayName: 'Run a one-line script'
