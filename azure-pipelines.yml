@@ -48,8 +48,8 @@ stages:
      - script: pip3 install ansible[azure]
        displayName: 'Install Ansible and the Azure modules'
     
-     #- script: ~/.local/bin/ansible-playbook create_env.yml
-     #  displayName: 'createenv ansible script'
+     - script: ~/.local/bin/ansible-playbook create_env.yml
+       displayName: 'createenv ansible script'
 
 
 - stage: Build
