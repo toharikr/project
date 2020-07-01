@@ -137,14 +137,14 @@ stages:
               action: createSecret
               namespace: default
               secretType: dockerRegistry
-              secretName: bar-acr-secret
+              secretName: qa-acr-secret
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
               
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
               action: createSecret
-              secretName: bar-acr-secret
+              secretName: qa-acr-secret
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
               
           - task: KubernetesManifest@0
