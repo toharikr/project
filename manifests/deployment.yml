@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
         - name: toharikrproject 
-          image: demoazurecr.azurecr.io/toharikrproject
+          image: acrauto.azurecr.io/toharikrproject
           ports:
           - containerPort: 8080
