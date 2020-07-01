@@ -54,7 +54,7 @@ stages:
      #  displayName: 'createenv ansible script'
 
 
-- stage: Build
+/*- stage: Build
   displayName: Build stage
   
   jobs:  
@@ -87,103 +87,103 @@ stages:
             "isReady": false
           }
         waitForCompletion: 'false'
-    - task: Docker@2
-      displayName: Build and push an image to container registry
-      inputs:
-        command: buildAndPush
-        repository: ${{ variables.imageRepository }}
-        dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
+#     - task: Docker@2
+#       displayName: Build and push an image to container registry
+#       inputs:
+#         command: buildAndPush
+#         repository: ${{ variables.imageRepository }}
+#         dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
+#         containerRegistry: $(dockerRegistryServiceConnection)
+#         tags: |
+#           $(tag)
     
-    - upload: manifests
-      artifact: manifests
+#     - upload: manifests
+#       artifact: manifests
  
-- stage: Dev
-  displayName: 'Deploy to the dev environment'
-  jobs:
-  - deployment: Deploy
-    displayName: 'Deploy to the dev environment'
-    pool:
-      vmImage: 'ubuntu-latest'
-    environment: 'projectdev.default'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
+# - stage: Dev
+#   displayName: 'Deploy to the dev environment'
+#   jobs:
+#   - deployment: Deploy
+#     displayName: 'Deploy to the dev environment'
+#     pool:
+#       vmImage: 'ubuntu-latest'
+#     environment: 'projectdev.default'
+#     strategy:
+#       runOnce:
+#         deploy:
+#           steps:
           
-          - task: KubernetesManifest@0
-            displayName: Create secret
-            inputs: 
-              action: createSecret
-              namespace: default
-              secretType: dockerRegistry
-              secretName: bar-acr-secret
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+#           - task: KubernetesManifest@0
+#             displayName: Create secret
+#             inputs: 
+#               action: createSecret
+#               namespace: default
+#               secretType: dockerRegistry
+#               secretName: bar-acr-secret
+#               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
               
-          - task: KubernetesManifest@0
-            displayName: Create imagePullSecret
-            inputs:
-              action: createSecret
-              secretName: bar-acr-secret
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+#           - task: KubernetesManifest@0
+#             displayName: Create imagePullSecret
+#             inputs:
+#               action: createSecret
+#               secretName: bar-acr-secret
+#               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
               
-          - task: KubernetesManifest@0
-            displayName: Deploy to Kubernetes cluster
-            inputs:
-              action: deploy
-              manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
-              imagePullSecrets: |
-                bar-acr-secret
-              containers: |
-                $(containerRegistry)/$(imageRepository):$(tag)
+#           - task: KubernetesManifest@0
+#             displayName: Deploy to Kubernetes cluster
+#             inputs:
+#               action: deploy
+#               manifests: |
+#                 $(Pipeline.Workspace)/manifests/deployment.yml
+#                 $(Pipeline.Workspace)/manifests/service.yml
+#               imagePullSecrets: |
+#                 bar-acr-secret
+#               containers: |
+#                 $(containerRegistry)/$(imageRepository):$(tag)
 
 
-- stage: QA
-  displayName: 'Deploy to the QA environment'
-  jobs:
-  - deployment: Deploy
-    displayName: 'Deploy to the QA environment'
-    pool:
-      vmImage: 'ubuntu-latest'
-    environment: 'projectqa.default'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
+# - stage: QA
+#   displayName: 'Deploy to the QA environment'
+#   jobs:
+#   - deployment: Deploy
+#     displayName: 'Deploy to the QA environment'
+#     pool:
+#       vmImage: 'ubuntu-latest'
+#     environment: 'projectqa.default'
+#     strategy:
+#       runOnce:
+#         deploy:
+#           steps:
           
-          - task: KubernetesManifest@0
-            displayName: Create secret
-            inputs: 
-              action: createSecret
-              namespace: default
-              secretType: dockerRegistry
-              secretName: qa-acr-secret
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              kubernetesServiceConnection: $(kubernetesServiceConnection)
+#           - task: KubernetesManifest@0
+#             displayName: Create secret
+#             inputs: 
+#               action: createSecret
+#               namespace: default
+#               secretType: dockerRegistry
+#               secretName: qa-acr-secret
+#               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+#               kubernetesServiceConnection: $(kubernetesServiceConnection)
               
-          - task: KubernetesManifest@0
-            displayName: Create imagePullSecret
-            inputs:
-              action: createSecret
-              secretName: qa-acr-secret
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              kubernetesServiceConnection: $(kubernetesServiceConnection)
+#           - task: KubernetesManifest@0
+#             displayName: Create imagePullSecret
+#             inputs:
+#               action: createSecret
+#               secretName: qa-acr-secret
+#               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+#               kubernetesServiceConnection: $(kubernetesServiceConnection)
               
-          - task: KubernetesManifest@0
-            displayName: Deploy to Kubernetes cluster
-            inputs:
-              action: deploy
-              manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
-              imagePullSecrets: |
-                qa-acr-secret
-              containers: |
-                $(containerRegistry)/$(imageRepository):$(tag)
+#           - task: KubernetesManifest@0
+#             displayName: Deploy to Kubernetes cluster
+#             inputs:
+#               action: deploy
+#               manifests: |
+#                 $(Pipeline.Workspace)/manifests/deployment.yml
+#                 $(Pipeline.Workspace)/manifests/service.yml
+#               imagePullSecrets: |
+#                 qa-acr-secret
+#               containers: |
+#                 $(containerRegistry)/$(imageRepository):$(tag)
            
 
   
