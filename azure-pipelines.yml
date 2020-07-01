@@ -68,6 +68,7 @@ stages:
       inputs:
         connectionType: 'connectedServiceNameARM'
         azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
+        api-version: '2018-07-01'
         method: 'POST'
         body: |
           {
@@ -78,7 +79,6 @@ stages:
             "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
             "name": "TestEndpoint",
             "type": "Azure",
-            "api-version": "2018-07-01",
             "authorization": {
               "parameters": {
                 "Certificate": "dummyCertificate"
