@@ -113,7 +113,7 @@ stages:
                 $(Pipeline.Workspace)/manifests/deployment.yml
                 $(Pipeline.Workspace)/manifests/service.yml
               imagePullSecrets: |
-                $(imagePullSecret)
+                bar-acr-secret
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
 
@@ -155,7 +155,7 @@ stages:
                 $(Pipeline.Workspace)/manifests/deployment.yml
                 $(Pipeline.Workspace)/manifests/service.yml
               imagePullSecrets: |
-                $(imagePullSecret)
+                qa-acr-secret
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
   
