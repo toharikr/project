@@ -8,8 +8,8 @@
 trigger:
 - master
 
-pool: server
-  #vmImage: 'ubuntu-latest'
+pool: 
+  vmImage: 'ubuntu-latest'
   
 variables:
 - template: simple-param.yml  # Template reference
@@ -60,8 +60,8 @@ stages:
   jobs:  
   - job: Build
     displayName: Build
-    pool:
-      vmImage: 'ubuntu-latest'
+    pool:  server
+    #  vmImage: 'ubuntu-latest'
       
     steps:
     - task: InvokeRESTAPI@1
