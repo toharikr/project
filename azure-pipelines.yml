@@ -31,6 +31,7 @@ stages:
      - script: sudo apt-get autoremove python2.7
        displayName: 'Remove Python 2.7'
   
+  
      - script: sudo apt-get install python3.6
        displayName: 'Install Python 3.6'
        
