@@ -66,8 +66,9 @@ stages:
     steps:
     - task: InvokeRESTAPI@1
       inputs:
-        connectionType: 'connectedServiceNameARM'
-        azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)?api-version="2015-10-01"'
+        connectionType: 'Azure Resource Manager'
+        #'connectedServiceNameARM'
+        azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
         method: 'POST'
         body: |
           {
