@@ -82,7 +82,7 @@ stages:
                 "SubscriptionName": "Azure subscription 1"
               },
               "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
-              "name": "TestEndpoint",
+              "name": "TestEndpoint1",
               "type": "Azure",
                 "authorization": {
                 "parameters": {
