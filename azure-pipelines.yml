@@ -69,7 +69,7 @@ stages:
 
     
 
-    steps:
+    #steps:
  
        
       # - task: InvokeRESTAPI@1
@@ -100,7 +100,7 @@ stages:
   - job: Build1
     displayName: Build1
     pool:  
-     vmImage: 'ubuntu-latest'
+      vmImage: 'ubuntu-latest'
     steps:
       - task: Docker@2
         displayName: Build and push an image to container registry
