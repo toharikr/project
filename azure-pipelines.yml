@@ -86,6 +86,7 @@ stages:
             "AuthToken": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a"
             }
           waitForCompletion: 'false'
+          
     
 #     - task: Docker@2
 #       displayName: Build and push an image to container registry
