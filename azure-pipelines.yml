@@ -72,8 +72,7 @@ stages:
         connectionType: 'connectedServiceName'
         serviceConnection: 'Generic'
         method: 'GET'
-        headers: 
-          AuthToken: $(system.AccessToken)
+        headers: '{Content-Type:application/json, PlanUrl: $(system.CollectionUri), ProjectId: $(system.TeamProjectId), HubName: $(system.HostType), PlanId: $(system.PlanId), JobId: $(system.JobId), TimelineId: $(system.TimelineId), TaskInstanceId: $(system.TaskInstanceId), AuthToken: $(system.AccessToken)}'
 #         body: |
 #           "data": {
 #               "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
