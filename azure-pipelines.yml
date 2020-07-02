@@ -85,8 +85,8 @@ stages:
               "type": "Azure",
                 "authorization": {
                 "parameters": {
-                  "Username": "toharikr",
-                  "Password": "dahilnest123"
+                  "Username": "devopsazure66",
+                  "Password": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a"
                 },
                 "scheme": "UsernamePassword"
               },
