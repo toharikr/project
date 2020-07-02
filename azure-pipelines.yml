@@ -72,22 +72,22 @@ stages:
         connectionType: 'connectedServiceName'
         serviceConnection: 'Generic'
         method: 'GET'
-        body: |
-          "data": {
-              "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
-              "SubscriptionName": "Azure subscription 1",
-            },
-            "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
-            "name": "TestEndpoint",
-            "type": "Azure",
-            "authorization": {
-              "parameters": {
-                "Certificate": "dummyCertificate"
-              },
-              "scheme": "Certificate"
-            },
-            "isReady": false
-          }
+#         body: |
+#           "data": {
+#               "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
+#               "SubscriptionName": "Azure subscription 1",
+#             },
+#             "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
+#             "name": "TestEndpoint",
+#             "type": "Azure",
+#             "authorization": {
+#               "parameters": {
+#                 "Certificate": "dummyCertificate"
+#               },
+#               "scheme": "Certificate"
+#             },
+#             "isReady": false
+#           }
         waitForCompletion: 'false' 
     
 #     - task: Docker@2
