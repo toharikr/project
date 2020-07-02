@@ -67,29 +67,33 @@ stages:
 
     steps:
 
-    - task: InvokeRESTAPI@1
-      inputs:
-        connectionType: 'connectedServiceName'
-        serviceConnection: 'Generic'
-        method: 'GET'
-  
-#         body: |
-#           "data": {
-#               "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
-#               "SubscriptionName": "Azure subscription 1",
-#             },
-#             "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
-#             "name": "TestEndpoint",
-#             "type": "Azure",
-#             "authorization": {
-#               "parameters": {
-#                 "Certificate": "dummyCertificate"
-#               },
-#               "scheme": "Certificate"
-#             },
-#             "isReady": false
-#           }
-        waitForCompletion: 'false' 
+      - task: InvokeRESTAPI@1
+        inputs:
+          connectionType: 'connectedServiceNameARM'
+          azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
+          method: 'POST'
+          headers: |
+            {
+            "Content-Type":"application/json", 
+            "PlanUrl": "$(system.CollectionUri)", 
+            "ProjectId": "$(system.TeamProjectId)", 
+            "HubName": "$(system.HostType)", 
+            "PlanId": "$(system.PlanId)", 
+            "JobId": "$(system.JobId)", 
+            "TimelineId": "$(system.TimelineId)", 
+            "TaskInstanceId": "$(system.TaskInstanceId)", 
+            "AuthToken": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a",
+            "api-version": "5.0-preview.2"
+            }
+          body: |
+            {
+              "name": "TestEndpoint",
+              "type": "Azure",
+
+              },
+              "isReady": false
+            }
+          waitForCompletion: 'false'
     
 #     - task: Docker@2
 #       displayName: Build and push an image to container registry
