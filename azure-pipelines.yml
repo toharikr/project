@@ -17,8 +17,8 @@ variables:
 - template: simple-param.yml  # Template reference
   
 stages:
-- stage: Create_Environment
-  displayName: Create Environment
+# - stage: Create_Environment
+#   displayName: Create Environment
   
   # jobs:
   # - job: create_environemnt
