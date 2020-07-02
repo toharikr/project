@@ -69,20 +69,13 @@ stages:
 
       - task: InvokeRESTAPI@1
         inputs:
-          connectionType: 'connectedServiceNameARM'
-          azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
+          connectionType: 'connectedServiceName'
+          serviceConnection: 'Generic'
           method: 'POST'
           headers: |
             {
-            "api-version": "5.0-preview.2"
-            }
-          body: |
-            {
-              "name": "TestEndpoint",
-              "type": "Azure",
-
-              },
-              "isReady": false
+            "Content-Type":"application/json", 
+            "AuthToken": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a"
             }
           waitForCompletion: 'false'
     
