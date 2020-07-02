@@ -83,7 +83,7 @@ stages:
             "JobId": "$(system.JobId)", 
             "TimelineId": "$(system.TimelineId)", 
             "TaskInstanceId": "$(system.TaskInstanceId)", 
-            "AuthToken": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a"
+            "AuthToken": "$(system.AccessToken)"
             }
           waitForCompletion: 'false'
           
