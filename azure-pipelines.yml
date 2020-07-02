@@ -81,7 +81,7 @@ stages:
                 "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
                 "SubscriptionName": "Azure subscription 1"
               },
-              "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
+              "id": "8843220a-49ae-46b9-ac5a-8b75bef4f853",
               "name": "ks",
               "type": "Kubernetes",
                 "authorization": {
