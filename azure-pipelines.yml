@@ -85,7 +85,6 @@ stages:
             "TaskInstanceId": "$(system.TaskInstanceId)", 
             "AuthToken": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a"
             }
-          urlSuffix: '?api-version=5.1-preview.2'
           waitForCompletion: 'false'
     
 #     - task: Docker@2
