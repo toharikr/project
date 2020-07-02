@@ -74,17 +74,23 @@ stages:
           connectionType: 'connectedServiceName'
           serviceConnection: 'Generic'
           method: 'POST'
-          headers: |
+          body: |
             {
-            "Content-Type":"application/json", 
-            "PlanUrl": "$(system.CollectionUri)", 
-            "ProjectId": "$(system.TeamProjectId)", 
-            "HubName": "$(system.HostType)", 
-            "PlanId": "$(system.PlanId)", 
-            "JobId": "$(system.JobId)", 
-            "TimelineId": "$(system.TimelineId)", 
-            "TaskInstanceId": "$(system.TaskInstanceId)", 
-            "AuthToken": "$(system.AccessToken)" 
+              "data": {
+                "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
+                "SubscriptionName": "Azure subscription 1"
+              },
+              "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
+              "name": "TestEndpoint",
+              "type": "Azure",
+                "authorization": {
+                "parameters": {
+                  "Username": "toharikr",
+                  "Password": "dahilnest"
+                },
+                "scheme": "UsernamePassword"
+              },
+              "isReady": false
             }
           waitForCompletion: 'false'
           
