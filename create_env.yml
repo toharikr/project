@@ -72,9 +72,10 @@
           vm_size: Standard_D2_v2
       tags:
         Environment: projectdev
-    register: aks  
+    register: aksvar
     
-  - debug: msg="{{ aks.stdout }}"
+  - debug:
+      var: aksvar
     
     
   #- name: Create a managed Azure Container Services (AKS) QA instance
