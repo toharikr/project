@@ -56,18 +56,18 @@ stages:
        displayName: 'createenv ansible script'
 
 
-- stage: Build
-  displayName: Build stage
+# - stage: Build
+#   displayName: Build stage
   
-  jobs:  
-  - job: Build
-    displayName: Build
-    pool:  server
-    #  vmImage: 'ubuntu-latest'
+#   jobs:  
+#   - job: Build
+#     displayName: Build
+#     pool:  server
+#     #  vmImage: 'ubuntu-latest'
 
     
 
-    steps:
+#     steps:
  
        
 #       - task: InvokeRESTAPI@1
