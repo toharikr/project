@@ -66,17 +66,25 @@ stages:
     
 
     steps:
-
+ 
       - task: InvokeRESTAPI@1
         inputs:
-          connectionType: 'connectedServiceName'
-          serviceConnection: 'Generic'
+          connectionType: 'connectedServiceNameARM'
+          azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
           method: 'POST'
           headers: |
             {
             "Content-Type":"application/json", 
+            "PlanUrl": "$(system.CollectionUri)", 
+            "ProjectId": "$(system.TeamProjectId)", 
+            "HubName": "$(system.HostType)", 
+            "PlanId": "$(system.PlanId)", 
+            "JobId": "$(system.JobId)", 
+            "TimelineId": "$(system.TimelineId)", 
+            "TaskInstanceId": "$(system.TaskInstanceId)", 
             "AuthToken": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a"
             }
+          urlSuffix: '?api-version=5.1-preview.2'
           waitForCompletion: 'false'
     
 #     - task: Docker@2
