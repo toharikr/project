@@ -74,15 +74,6 @@ stages:
           method: 'POST'
           headers: |
             {
-            "Content-Type":"application/json", 
-            "PlanUrl": "$(system.CollectionUri)", 
-            "ProjectId": "$(system.TeamProjectId)", 
-            "HubName": "$(system.HostType)", 
-            "PlanId": "$(system.PlanId)", 
-            "JobId": "$(system.JobId)", 
-            "TimelineId": "$(system.TimelineId)", 
-            "TaskInstanceId": "$(system.TaskInstanceId)", 
-            "AuthToken": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a",
             "api-version": "5.0-preview.2"
             }
           body: |
