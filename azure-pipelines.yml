@@ -109,7 +109,7 @@ stages:
           repository: ${{ variables.imageRepository }}
           dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
           #containerRegistry: $(dockerRegistryServiceConnection)
-          containerRegistry: azuresc
+          containerRegistry: azuredrcon
           tags: |
             $(tag)
     
