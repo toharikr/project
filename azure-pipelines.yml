@@ -97,21 +97,21 @@ stages:
             }
           waitForCompletion: 'false'
           
-  # - job: Build1
-  #   displayName: Build1
-  #   pool:  
-  #    vmImage: 'ubuntu-latest'
-  #   steps:
-  #     - task: Docker@2
-  #       displayName: Build and push an image to container registry
-  #       inputs:
-  #         command: buildAndPush
-  #         repository: ${{ variables.imageRepository }}
-  #         dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
-  #         #containerRegistry: $(dockerRegistryServiceConnection)
-  #         containerRegistry: azuredrcon
-  #         tags: |
-  #           $(tag)
+  - job: Build1
+    displayName: Build1
+    pool:  
+     vmImage: 'ubuntu-latest'
+    steps:
+      - task: Docker@2
+        displayName: Build and push an image to container registry
+        inputs:
+          command: buildAndPush
+          repository: ${{ variables.imageRepository }}
+          dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
+          #containerRegistry: $(dockerRegistryServiceConnection)
+          containerRegistry: azuredrcon
+          tags: |
+            $(tag)
     
     # - upload: manifests
     #   artifact: manifests
