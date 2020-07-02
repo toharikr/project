@@ -83,9 +83,9 @@ stages:
                 "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
                 "SubscriptionName": "Azure subscription 1"
               },
-              "id": "123",
-              "name": "azuresc",
-              "type": "Azure",
+              "id": "12345",
+              "name": "azuredrcon",
+              "type": "dockerregistry",
                 "authorization": {
                 "parameters": {
                   "Username": "devopsazure66",
