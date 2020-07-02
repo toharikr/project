@@ -129,21 +129,21 @@ stages:
         deploy:
           steps:
           
-          - task: KubernetesManifest@0
-            displayName: Create secret
-            inputs: 
-              action: createSecret
-              namespace: default
-              secretType: dockerRegistry
-              secretName: bar-acr-secret
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              kubernetesServiceConnection: azurekc
+          # - task: KubernetesManifest@0
+          #   displayName: Create secret
+          #   inputs: 
+          #     action: createSecret
+          #     namespace: default
+          #     secretType: dockerRegistry
+          #     secretName: bar-acr-secret
+          #     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+          #     kubernetesServiceConnection: azurekc
               
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
               action: createSecret
-              secretName: bar-acr-secret
+              secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
               kubernetesServiceConnection: azurekc
               
@@ -155,7 +155,7 @@ stages:
                 $(Pipeline.Workspace)/manifests/deployment.yml
                 $(Pipeline.Workspace)/manifests/service.yml
               imagePullSecrets: |
-                bar-acr-secret
+                $(imagePullSecret)
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
 
