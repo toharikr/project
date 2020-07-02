@@ -67,10 +67,11 @@ stages:
 
     steps:
  
+       
       - task: InvokeRESTAPI@1
         inputs:
-          connectionType: 'connectedServiceNameARM'
-          azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
+          connectionType: 'connectedServiceName'
+          serviceConnection: 'Generic'
           method: 'POST'
           headers: |
             {
@@ -83,19 +84,6 @@ stages:
             "TimelineId": "$(system.TimelineId)", 
             "TaskInstanceId": "$(system.TaskInstanceId)", 
             "AuthToken": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a"
-            }
-          body: |
-            {
-              "data": {
-                "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
-                "SubscriptionName": "Azure subscription 1",
-              },
-              "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
-              "name": "TestEndpoint",
-              "type": "Azure",
-            
-              },
-              "isReady": false
             }
           urlSuffix: '?api-version=5.1-preview.2'
           waitForCompletion: 'false'
