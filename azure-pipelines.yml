@@ -15,6 +15,7 @@ pool:
   
 variables:
 - template: simple-param.yml  # Template reference
+
   
 stages:
 # - stage: Create_Environment
