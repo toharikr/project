@@ -82,8 +82,8 @@ stages:
                 "SubscriptionName": "Azure subscription 1"
               },
               "id": "64be39c2-102b-416d-a3ac-2de40ebc8513",
-              "name": "TestEndpoint1",
-              "type": "Azure",
+              "name": "ks",
+              "type": "Kubernetes",
                 "authorization": {
                 "parameters": {
                   "Username": "devopsazure66",
