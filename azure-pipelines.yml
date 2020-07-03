@@ -69,9 +69,39 @@ stages:
 
     
 
-    #steps:
+    steps:
  
-       
+      - task: InvokeRESTAPI@1
+        inputs:
+          connectionType: 'connectedServiceName'
+          serviceConnection: 'Generic'
+          method: 'POST'
+          body: |
+            {
+                "authorization": {
+                    "scheme": "ServicePrincipal",
+                    "parameters": {
+                        "loginServer": "<ACRSERVER>.azurecr.io",
+                        "servicePrincipalId": "<APPLICATIONid OF SPN>",
+                        "tenantId": "<TENANTID>",
+                        "serviceprincipalkey": "<SPN kEY>"
+                    }
+                },
+                "description": "",
+                "name": "Name of Connection",
+                "type": "dockerregistry",
+                "url": "https://<ACRSERVER>.azurecr.io",
+                "isShared": false,
+                "owner": "library",
+                "data": {
+                    "registryId": "/subscriptions/<SUBSCRIPTIONID>/resourceGroups/<RESOURCEGROUP>/providers/Microsoft.ContainerRegistry/registries/<ACRSERVER>",
+                    "registrytype": "ACR",
+                    "spnObjectId": "",
+                    "subscriptionId": "<SUBSCRIPTIONID>",
+                    "subscriptionName": "<SUBSCRIPTIONNAME>"
+                }
+            }
+          waitForCompletion: 'false'
       # - task: InvokeRESTAPI@1
       #   inputs:
       #     connectionType: 'connectedServiceName'
@@ -97,37 +127,37 @@ stages:
       #       }
       #     waitForCompletion: 'false'
           
-  - job: Build1
-    displayName: Build1
-    pool:  
-      vmImage: 'ubuntu-latest'
-    steps:
-      - task: Docker@2
-        displayName: Build and push an image to container registry
-        inputs:
-          command: buildAndPush
-          repository: ${{ variables.imageRepository }}
-          dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
-          #containerRegistry: $(dockerRegistryServiceConnection)
-          containerRegistry: $(dockerRegistryServiceConnection)
-          tags: |
-            $(tag)
+#   - job: Build1
+#     displayName: Build1
+#     pool:  
+#       vmImage: 'ubuntu-latest'
+#     steps:
+#       - task: Docker@2
+#         displayName: Build and push an image to container registry
+#         inputs:
+#           command: buildAndPush
+#           repository: ${{ variables.imageRepository }}
+#           dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
+#           #containerRegistry: $(dockerRegistryServiceConnection)
+#           containerRegistry: $(dockerRegistryServiceConnection)
+#           tags: |
+#             $(tag)
     
-    # - upload: manifests
-    #   artifact: manifests
+#     # - upload: manifests
+#     #   artifact: manifests
  
-- stage: Dev
-  displayName: 'Deploy to the dev environment'
-  jobs:
-  - deployment: Deploy
-    displayName: 'Deploy to the dev environment'
-    pool:
-      vmImage: 'ubuntu-latest'
-    environment: 'projectdev.default'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
+# - stage: Dev
+#   displayName: 'Deploy to the dev environment'
+#   jobs:
+#   - deployment: Deploy
+#     displayName: 'Deploy to the dev environment'
+#     pool:
+#       vmImage: 'ubuntu-latest'
+#     environment: 'projectdev.default'
+#     strategy:
+#       runOnce:
+#         deploy:
+#           steps:
           
           # - task: KubernetesManifest@0
           #   displayName: Create secret
@@ -139,25 +169,25 @@ stages:
           #     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
           #     kubernetesServiceConnection: azurekc
               
-          - task: KubernetesManifest@0
-            displayName: Create imagePullSecret
-            inputs:
-              action: createSecret
-              secretName: $(imagePullSecret)
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              #kubernetesServiceConnection: azurekc
+          # - task: KubernetesManifest@0
+          #   displayName: Create imagePullSecret
+          #   inputs:
+          #     action: createSecret
+          #     secretName: $(imagePullSecret)
+          #     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+          #     #kubernetesServiceConnection: azurekc
               
-          - task: KubernetesManifest@0
-            displayName: Deploy to Kubernetes cluster
-            inputs:
-              action: deploy
-              manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
-              imagePullSecrets: |
-                $(imagePullSecret)
-              containers: |
-                $(containerRegistry)/$(imageRepository):$(tag)
+          # - task: KubernetesManifest@0
+          #   displayName: Deploy to Kubernetes cluster
+          #   inputs:
+          #     action: deploy
+          #     manifests: |
+          #       $(Pipeline.Workspace)/manifests/deployment.yml
+          #       $(Pipeline.Workspace)/manifests/service.yml
+          #     imagePullSecrets: |
+          #       $(imagePullSecret)
+          #     containers: |
+          #       $(containerRegistry)/$(imageRepository):$(tag)
 
 
 # - stage: QA
