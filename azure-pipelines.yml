@@ -88,7 +88,7 @@ stages:
                     }
                 },
                 "description": "",
-                "name": "dockercon",
+                "name": "dockerfinalcon",
                 "type": "dockerregistry",
                 "url": "https://demoazurecr.azurecr.io",
                 "isShared": false,
