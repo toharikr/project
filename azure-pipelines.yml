@@ -63,15 +63,30 @@ stages:
   displayName: Build stage
   
   jobs:  
-  - job: Build
-    displayName: Build
-    pool:  server
-    #  vmImage: 'ubuntu-latest'
+  # - job: Build
+  #   displayName: Build
+  #   pool:  server
+  #   #  vmImage: 'ubuntu-latest'
 
     
 
-    steps:
- 
+    # steps:
+    - job: Build1
+      displayName: Build1
+      pool:  
+        vmImage: 'ubuntu-latest'
+      steps:
+        - task: Docker@2
+          displayName: Build and push an image to container registry
+          inputs:
+            command: buildAndPush
+            repository: ${{ variables.imageRepository }}
+            dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
+          #containerRegistry: $(dockerRegistryServiceConnection)
+            containerRegistry: dockerfinalcon
+            tags: |
+              $(tag)
+            
       # - task: InvokeRESTAPI@1
       #   inputs:
       #     connectionType: 'connectedServiceName'
@@ -128,22 +143,7 @@ stages:
       #       }
       #     waitForCompletion: 'false'
           
-  - job: Build1
-    displayName: Build1
-    pool:  
-      vmImage: 'ubuntu-latest'
-    steps:
-      - task: Docker@2
-        displayName: Build and push an image to container registry
-        inputs:
-          command: buildAndPush
-          repository: ${{ variables.imageRepository }}
-          dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
-          #containerRegistry: $(dockerRegistryServiceConnection)
-          containerRegistry: dockerfinalcon
-          tags: |
-            $(tag)
-    
+
 #     # - upload: manifests
 #     #   artifact: manifests
  
