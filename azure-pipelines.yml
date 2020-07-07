@@ -72,9 +72,8 @@ stages:
             azureSubscription: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
             scriptType: 'bash'
             scriptLocation: 'inlineScript'
-            inlineScript: |
-              az --version
-              az account show
+            inlineScript: 'az aks create -n myAKSCluster -g demoazurerg --generate-ssh-keys --attach-acr demoazurecr'
+
 -  stage: Build
    displayName: Build stage
   
