@@ -70,6 +70,7 @@
         - name: default
           count: 1
           vm_size: Standard_D2_v2
+      attach-acr: demoazurecr
       tags:
         Environment: projectdev
     register: aksvar
