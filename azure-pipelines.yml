@@ -93,37 +93,37 @@ stages:
 
 
 
-        - task: InvokeRESTAPI@1
-          inputs:
-            connectionType: 'connectedServiceName'
-            serviceConnection: 'Generic'
-            method: 'POST'
-            body: |
-              {
-                "authorization": {
-                    "scheme": "ServicePrincipal",
-                    "parameters": {
-                        "loginServer": "demoazurecr.azurecr.io",
-                        "servicePrincipalId": "694d098e-f2d8-4c03-8908-4ec256b8de86",
-                        "tenantId": "5b2e437c-a793-41e4-83a9-128e17c9b545",
-                        "serviceprincipalkey": "K445m2uIpF6O_qOTo2.ixVr.m940cHD1~_"
-                    }
-                },
-                "description": "",
-                "name": "dockerfinalcon",
-                "type": "dockerregistry",
-                "url": "https://demoazurecr.azurecr.io",
-                "isShared": false,
-                "owner": "library",
-                "data": {
-                    "registryId": "/subscriptions/ae23bab0-2471-4417-89f7-1eb784a6521c/resourceGroups/rgauto/providers/Microsoft.ContainerRegistry/registries/demoazurecr",
-                    "registrytype": "ACR",
-                    "spnObjectId": "",
-                    "subscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
-                    "subscriptionName": "Azure subscription 1"
-                }
-              }
-              waitForCompletion: 'false'
+#         - task: InvokeRESTAPI@1
+#           inputs:
+#             connectionType: 'connectedServiceName'
+#             serviceConnection: 'Generic'
+#             method: 'POST'
+#             body: |
+#               {
+#                 "authorization": {
+#                     "scheme": "ServicePrincipal",
+#                     "parameters": {
+#                         "loginServer": "demoazurecr.azurecr.io",
+#                         "servicePrincipalId": "694d098e-f2d8-4c03-8908-4ec256b8de86",
+#                         "tenantId": "5b2e437c-a793-41e4-83a9-128e17c9b545",
+#                         "serviceprincipalkey": "K445m2uIpF6O_qOTo2.ixVr.m940cHD1~_"
+#                     }
+#                 },
+#                 "description": "",
+#                 "name": "dockerfinalcon",
+#                 "type": "dockerregistry",
+#                 "url": "https://demoazurecr.azurecr.io",
+#                 "isShared": false,
+#                 "owner": "library",
+#                 "data": {
+#                     "registryId": "/subscriptions/ae23bab0-2471-4417-89f7-1eb784a6521c/resourceGroups/rgauto/providers/Microsoft.ContainerRegistry/registries/demoazurecr",
+#                     "registrytype": "ACR",
+#                     "spnObjectId": "",
+#                     "subscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
+#                     "subscriptionName": "Azure subscription 1"
+#                 }
+#               }
+#               waitForCompletion: 'false'
 
 
         - task: Docker@2
@@ -191,25 +191,25 @@ stages:
           #     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
           #     kubernetesServiceConnection: azurekc
               
-          # - task: KubernetesManifest@0
-          #   displayName: Create imagePullSecret
-          #   inputs:
-          #     action: createSecret
-          #     secretName: $(imagePullSecret)
-          #     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+          - task: KubernetesManifest@0
+            displayName: Create imagePullSecret
+            inputs:
+              action: createSecret
+              secretName: $(imagePullSecret)
+              dockerRegistryEndpoint: dockerfinalcon
           #     #kubernetesServiceConnection: azurekc
               
-          # - task: KubernetesManifest@0
-          #   displayName: Deploy to Kubernetes cluster
-          #   inputs:
-          #     action: deploy
-          #     manifests: |
-          #       $(Pipeline.Workspace)/manifests/deployment.yml
-          #       $(Pipeline.Workspace)/manifests/service.yml
-          #     imagePullSecrets: |
-          #       $(imagePullSecret)
-          #     containers: |
-          #       $(containerRegistry)/$(imageRepository):$(tag)
+          - task: KubernetesManifest@0
+            displayName: Deploy to Kubernetes cluster
+            inputs:
+              action: deploy
+              manifests: |
+                $(Pipeline.Workspace)/manifests/deployment.yml
+                $(Pipeline.Workspace)/manifests/service.yml
+              imagePullSecrets: |
+                $(imagePullSecret)
+              containers: |
+                $(containerRegistry)/$(imageRepository):$(tag)
 
 
 # - stage: QA
