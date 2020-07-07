@@ -23,40 +23,40 @@ stages:
 #   displayName: Create Environment
   
   # jobs:
-  # - job: create_environemnt
-  #   displayName: create environemnt   
-  #   steps:
+  - job: create_environemnt
+    displayName: create environemnt   
+    steps:
      
-  #    - script: echo Hello, world!
-  #      displayName: 'Run a one-line script'
+     - script: echo Hello, world!
+       displayName: 'Run a one-line script'
   
-  #    - script: sudo apt-get autoremove python2.7
-  #      displayName: 'Remove Python 2.7'
+     - script: sudo apt-get autoremove python2.7
+       displayName: 'Remove Python 2.7'
   
   
-  #    - script: sudo apt-get install python3.6
-  #      displayName: 'Install Python 3.6'
+     - script: sudo apt-get install python3.6
+       displayName: 'Install Python 3.6'
        
-  #    - script: pip3 install wheel 
-  #      displayName: 'Install Pyhton wheel'
+     - script: pip3 install wheel 
+       displayName: 'Install Pyhton wheel'
        
-  #    - script: pip3 install --upgrade pip
-  #      displayName: 'install Pyhton pip'
+     - script: pip3 install --upgrade pip
+       displayName: 'install Pyhton pip'
 
-  #    - script: pip3 install packaging
-  #      displayName: 'Install Python packaging'
+     - script: pip3 install packaging
+       displayName: 'Install Python packaging'
 
-  #    - script: sudo apt-get install python3-setuptools
-  #      displayName: 'Install Python setuptools'
+     - script: sudo apt-get install python3-setuptools
+       displayName: 'Install Python setuptools'
 
-  #    - script: pip3 install ansible
-  #      displayName: 'Install ansible'
+     - script: pip3 install ansible
+       displayName: 'Install ansible'
 
-  #    - script: pip3 install ansible[azure]
-  #      displayName: 'Install Ansible and the Azure modules'
+     - script: pip3 install ansible[azure]
+       displayName: 'Install Ansible and the Azure modules'
     
-  #    - script: ~/.local/bin/ansible-playbook create_env.yml
-  #      displayName: 'createenv ansible script'
+     - script: ~/.local/bin/ansible-playbook create_env.yml
+       displayName: 'createenv ansible script'
 
 
 - stage: Build
@@ -76,56 +76,6 @@ stages:
       pool:  
         vmImage: 'ubuntu-latest'
       steps:
-        # - task: Docker@2
-        #   displayName: Build and push an image to container registry
-        #   inputs:
-        #     command: buildAndPush
-        #     repository: ${{ variables.imageRepository }}
-        #     dockerfile: $(Build.SourcesDirectory)/$(dockerfilePath)
-        #   #containerRegistry: $(dockerRegistryServiceConnection)
-        #     containerRegistry: dockerfinalcon
-        #     tags: |
-        #       $(tag)
-
-
-        
-
-
-
-
-#         - task: InvokeRESTAPI@1
-#           inputs:
-#             connectionType: 'connectedServiceName'
-#             serviceConnection: 'Generic'
-#             method: 'POST'
-#             body: |
-#               {
-#                 "authorization": {
-#                     "scheme": "ServicePrincipal",
-#                     "parameters": {
-#                         "loginServer": "demoazurecr.azurecr.io",
-#                         "servicePrincipalId": "694d098e-f2d8-4c03-8908-4ec256b8de86",
-#                         "tenantId": "5b2e437c-a793-41e4-83a9-128e17c9b545",
-#                         "serviceprincipalkey": "K445m2uIpF6O_qOTo2.ixVr.m940cHD1~_"
-#                     }
-#                 },
-#                 "description": "",
-#                 "name": "dockerfinalcon",
-#                 "type": "dockerregistry",
-#                 "url": "https://demoazurecr.azurecr.io",
-#                 "isShared": false,
-#                 "owner": "library",
-#                 "data": {
-#                     "registryId": "/subscriptions/ae23bab0-2471-4417-89f7-1eb784a6521c/resourceGroups/rgauto/providers/Microsoft.ContainerRegistry/registries/demoazurecr",
-#                     "registrytype": "ACR",
-#                     "spnObjectId": "",
-#                     "subscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
-#                     "subscriptionName": "Azure subscription 1"
-#                 }
-#               }
-#               waitForCompletion: 'false'
-
-
         - task: Docker@2
           displayName: Build and push an image to container registry
           inputs:
@@ -138,66 +88,14 @@ stages:
               $(tag)
 
 
-
-      # - task: InvokeRESTAPI@1
-      #   inputs:
-      #     connectionType: 'connectedServiceName'
-      #     serviceConnection: 'Generic'
-      #     method: 'POST'
-      #     body: |
-      #       {
-      #         "data": {
-      #           "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
-      #           "SubscriptionName": "Azure subscription 1"
-      #         },
-      #         "id": "12345",
-      #         "name": "azuredrcon",
-      #         "type": "dockerregistry",
-      #           "authorization": {
-      #           "parameters": {
-      #             "Username": "devopsazure66",
-      #             "Password": "62ryddkfewkkqzzjnayymiouka2gzrtxvb5tcneh4qiw5zmhpjaa"
-      #           },
-      #           "scheme": "UsernamePassword"
-      #         },
-      #         "isReady": false
-      #       }
-      #     waitForCompletion: 'false'
-          
-
-#     # - upload: manifests
-#     #   artifact: manifests
- 
-# - stage: Dev
-#   displayName: 'Deploy to the dev environment'
-#   jobs:
-#   - deployment: Deploy
-#     displayName: 'Deploy to the dev environment'
-#     pool:
-#       vmImage: 'ubuntu-latest'
-#     environment: 'projectdev.default'
-#     strategy:
-#       runOnce:
-#         deploy:
-#           steps:
-          
-          # - task: KubernetesManifest@0
-          #   displayName: Create secret
-          #   inputs: 
-          #     action: createSecret
-          #     namespace: default
-          #     secretType: dockerRegistry
-          #     secretName: bar-acr-secret
-          #     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-          #     kubernetesServiceConnection: azurekc
-              
+      
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: dockerfinalcon
-          #     #kubernetesServiceConnection: azurekc
+
               
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
@@ -212,48 +110,7 @@ stages:
                 $(containerRegistry)/$(imageRepository):$(tag)
 
 
-# - stage: QA
-#   displayName: 'Deploy to the QA environment'
-#   jobs:
-#   - deployment: Deploy
-#     displayName: 'Deploy to the QA environment'
-#     pool:
-#       vmImage: 'ubuntu-latest'
-#     environment: 'projectqa.default'
-#     strategy:
-#       runOnce:
-#         deploy:
-#           steps:
-          
-#           - task: KubernetesManifest@0
-#             displayName: Create secret
-#             inputs: 
-#               action: createSecret
-#               namespace: default
-#               secretType: dockerRegistry
-#               secretName: qa-acr-secret
-#               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-#               kubernetesServiceConnection: $(kubernetesServiceConnection)
-              
-#           - task: KubernetesManifest@0
-#             displayName: Create imagePullSecret
-#             inputs:
-#               action: createSecret
-#               secretName: qa-acr-secret
-#               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-#               kubernetesServiceConnection: $(kubernetesServiceConnection)
-              
-#           - task: KubernetesManifest@0
-#             displayName: Deploy to Kubernetes cluster
-#             inputs:
-#               action: deploy
-#               manifests: |
-#                 $(Pipeline.Workspace)/manifests/deployment.yml
-#                 $(Pipeline.Workspace)/manifests/service.yml
-#               imagePullSecrets: |
-#                 qa-acr-secret
-#               containers: |
-#                 $(containerRegistry)/$(imageRepository):$(tag)
+
            
 
   
